@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     height: 50px;
+    margin-top: 30px;
 }
 
 #search-bar{
@@ -27,35 +28,43 @@
     cursor: pointer;
 }
 
-#main-section{
-    /* background-color: rgb(92, 201, 205); */
-    padding: 20px 80px;
-}
-
-#info-section{
-    /* background-color: lightblue; */
+#info-section, #extra-info-section{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 40px;
     text-align: center;
-    margin-top: 30px;
+    margin: 30px 50px;
 }
 
-#extra-info-section{
-    background-color: lightgreen;
+#single-item-section{
+    text-align: center;
+    margin: 50px;
+    padding: 0px 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#main-section h2{
+    margin: 50px;
+}
+
+#ingredient-list{
+    list-style: none;
+    text-align: left;
 }
 
 .single-item{
-    background-color: lightgrey;
-    padding: 20px;
+    background-color: rgba(245, 237, 237, 0.808);
+    padding: 5px;
     border-radius: 10px;
     cursor: pointer;
 }
 
 .single-item:hover{
-    background-color: lightblue;
+    background-color: lightgrey;
 }
 
 .thumbnail{
-    height: 100px;
+    height: 150px;
+    width: 250px;
 }
