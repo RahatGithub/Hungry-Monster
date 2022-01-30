@@ -14,7 +14,6 @@ const loadDefault = () => {
     fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
     .then(res => res.json())
     .then(data => {
-        // console.log(Object.keys(data.categories).length)
         for (let i=0; i<Object.keys(data.categories).length; i++){
             const category = data.categories[i];
             const categoryName = category.strCategory;
@@ -40,7 +39,6 @@ const loadCatAndArea = input => {
     fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list')
     .then(res => res.json())
     .then(data => {
-        // console.log(data.meals);
         const categories = data.meals;
         const category = matchCategory(categories, input);
         if(category){
@@ -57,9 +55,12 @@ const loadCatAndArea = input => {
                     div.innerHTML = `
                         <img class="thumbnail" src="${thumbnail}" alt="thumbnail">
                         <h3>${name}</h3>
-                        <button onclick="displaySingleItem('${name}')">More</button>
                     `;
                     div.className = "single-item";
+                    // div.onclick = "displaySingleItem('${name}')";
+                    div.addEventListener('click', function(){
+                        displaySingleItem(name);
+                    })
                     section.appendChild(div);
                 }
             })
@@ -70,7 +71,6 @@ const loadCatAndArea = input => {
     fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list')
     .then(res => res.json())
     .then(data => {
-        // console.log(data.meals);
         const areas = data.meals;
         const area = matchArea(areas, input);
         if(area){
@@ -87,9 +87,11 @@ const loadCatAndArea = input => {
                     div.innerHTML = `
                         <img class="thumbnail" src="${thumbnail}" alt="thumbnail">
                         <h3>${name}</h3>
-                        <button onclick="displaySingleItem('${name}')">More</button>
                     `;
                     div.className = "single-item";
+                    div.addEventListener('click', function(){
+                        displaySingleItem(name);
+                    })
                     section.appendChild(div);
                 }
             })
@@ -100,7 +102,6 @@ const loadCatAndArea = input => {
 
 const matchCategory = (data, input) => {
     for(let i=0; i<Object.keys(data).length; i++){
-        // console.log(data[i].strCategory, input);
         if (input == data[i].strCategory){
             return data[i].strCategory;
         }
@@ -110,7 +111,6 @@ const matchCategory = (data, input) => {
 
 const matchArea = (data, input) => {
     for(let i=0; i<Object.keys(data).length; i++){
-        // console.log(data[i].strCategory, input);
         if (input == data[i].strArea){
             return data[i].strArea;
         }
